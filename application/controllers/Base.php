@@ -3,7 +3,12 @@
 class BaseController extends Yaf\Controller_Abstract{
 
     public function init(){
-        session_start();
+//        print_r($_SESSION);die;
+
+        if (!isset($_SESSION['username']) || empty($_SESSION['username'])){
+            $this->redirect('/index');
+        }
+
         $this->_config = Yaf\Registry::get('config');
         $this->_req = $this->getRequest();
     }

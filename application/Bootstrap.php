@@ -1,4 +1,8 @@
 <?php
+use Illuminate\Events\Dispatcher as LDispatcher;
+use Illuminate\Container\Container as LContainer;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 class Bootstrap extends Yaf\Bootstrap_Abstract {
     private $_config;
 
@@ -21,6 +25,19 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
         $loader->registerLocalNamespace(
             array('Helper','Error', 'Db')
         );
+    }
+
+    public function _initSession(){
+//        Yaf\Session::getInstance();
+        session_start();
+    }
+
+    public function _initDefaultDbAdapter(Yaf\Dispatcher $dispatcher){
+        $capsule = new Capsule();
+        $capsule->addConnection($this->_config->database->config->m->toArray());
+        $capsule->setEventDispatcher(new LDispatcher(new LContainer));
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
     }
 
     /**

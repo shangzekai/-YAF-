@@ -1,0 +1,8 @@
+{
+  "require": {
+    "illuminate/database": "5.0.*",
+    "illuminate/events": "5.0.*",
+    "symfony/debug": "2.6.*",
+    "symfony/var-dumper": "2.6.*"
+  }
+}

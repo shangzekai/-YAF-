@@ -25,12 +25,12 @@ class LayoutPlugin extends Yaf\Plugin_Abstract {
     public function postDispatch ( Yaf\Request_Abstract $request , Yaf\Response_Abstract $response ){
         /* get the body of the response */
         $body = $response->getBody();
-
         /*clear existing response*/
         $response->clearBody();
 
         /* wrap it in the layout */
         $layout = new Yaf\View\Simple($this->_layoutDir);
+
         $layout->content = $body;
         $layout->assign('layout', $this->_layoutVars);
 

@@ -10,14 +10,15 @@ class AdminController extends BaseController {
         $this->_layout = new LayoutPlugin('layout.html',APP_PATH . '/views/');
         $this->dispatcher = Yaf\Registry::get("dispatcher");
         $this->dispatcher->registerPlugin($this->_layout);
-        $this->_Admin = new AdminModel();
+//        $this->_Admin = new AdminModel();
     }
     /**
      * 用户管理首页
      */
     public function IndexAction() {
         //获取用户信息
-        $User_info = $this->_Admin->ShowUsers();
+//        $User_info = $this->_Admin->ShowUsers();
+        $User_info = AdminModel::all();
         $this->_view->usr_info = $User_info;
         $this->_layout->admin = true;
     }

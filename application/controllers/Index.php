@@ -2,25 +2,29 @@
 
 class IndexController extends BaseController {
 
-//    private $_layout;
+    private $_layout;
 
     public function init(){
-        parent::init();
+//        parent::init();
         //使用layout页面布局
 //        $this->_layout = new LayoutPlugin('layout.html', APP_PATH . '/views/layout/');
+        $this->_config = Yaf\Registry::get('config');
+        $this->_req = $this->getRequest();
     }
 
     /*首页展示*/
     public function IndexAction()
     {
-//        echo 'hello';
-//        return false;
         if($this->_req->isXmlHttpRequest()){
             //获取post提交的参数
             $name = $this->_req->getPost('usrname');
             $pwd = $this->_req->getPost('pwd');
-            $Admin = new AdminModel();
-            if(!$Admin->LoginUsr($name, md5($pwd))){
+//            $Admin = new AdminModel();
+//            echo '<pre>';
+//            var_dump($Admin->where('username', $name)->where('password', MD5($pwd))->first());
+//            die;
+
+            if(! AdminModel::where('username', $name)->where('password', MD5($pwd))->first() ){
                 exit("101:用户名或密码错误!");
             }
 //			$this->_session->set('username',$name);

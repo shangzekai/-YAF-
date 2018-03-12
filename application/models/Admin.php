@@ -1,7 +1,13 @@
 <?php
-class AdminModel extends Db_Base{
-	protected $_table = "admin";
-	/**
+
+use Illuminate\Database\Eloquent\Model;
+
+//class AdminModel extends Db_Base{
+class AdminModel extends Model{
+//	protected $_table = "admin";
+	protected $table = "admin";
+
+    /**
 	 * 用户登录判断
 	 */
 	public function LoginUsr($usr, $passwd)
