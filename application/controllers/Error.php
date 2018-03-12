@@ -3,10 +3,10 @@
  * yaf 框架报错类调用
  *  默认错误会调用这个Controller 中 ErrorAction
  */
-class ErrorController extends Yaf_Controller_Abstract {
+class ErrorController extends Yaf\Controller_Abstract {
     private $_config;
     public function init(){
-        $this->_config = Yaf_Application::app()->getConfig();
+        $this->_config = Yaf\Application::app()->getConfig();
     }
     /**
      * [具体错误处理]
@@ -15,14 +15,15 @@ class ErrorController extends Yaf_Controller_Abstract {
      */
     public function errorAction(Exception $exception)
     {
-        Yaf_Dispatcher::getInstance()->autoRender(false);
+        Yaf\Dispatcher::getInstance()->autoRender(false);
         if ($this->_config->application->showErrors) {
             switch ($exception->getCode()) {
-                case YAF_ERR_AUTOLOAD_FAILED:
-                case YAF_ERR_NOTFOUND_MODULE:
-                case YAF_ERR_NOTFOUND_CONTROLLER:
-                case YAF_ERR_NOTFOUND_ACTION:
-                case YAF_ERR_NOTFOUND_VIEW:
+                case Yaf\ERR_AUTOLOAD_FAILED:
+                case Yaf\ERR_NOTFOUND_MODULE:
+                case Yaf\ERR_NOTFOUND_CONTROLLER:
+                case Yaf\ERR_NOTFOUND_ACTION:
+                case Yaf\ERR_NOTFOUND_VIEW:
+//                case True:
                     if (strpos($this->getRequest()->getRequestUri(), '.css') !== false ||
                         strpos($this->getRequest()->getRequestUri(), '.jpg') !== false ||
                         strpos($this->getRequest()->getRequestUri(), '.js') !== false ||
@@ -41,17 +42,17 @@ class ErrorController extends Yaf_Controller_Abstract {
             }
         } else {
             //禁止输出视图内容
-            Yaf_Dispatcher::getInstance()->enableView();
+            Yaf\Dispatcher::getInstance()->enableView();
             switch ($exception->getCode()) {
-                case YAF_ERR_AUTOLOAD_FAILED:
-                case YAF_ERR_NOTFOUND_MODULE:
-                case YAF_ERR_NOTFOUND_CONTROLLER:
-                case YAF_ERR_NOTFOUND_ACTION:
-                case YAF_ERR_NOTFOUND_VIEW:
+                case Yaf\ERR_AUTOLOAD_FAILED:
+                case Yaf\ERR_NOTFOUND_MODULE:
+                case Yaf\ERR_NOTFOUND_CONTROLLER:
+                case Yaf\ERR_NOTFOUND_ACTION:
+                case Yaf\ERR_NOTFOUND_VIEW:
                     header('HTTP/1.1 404 Not Found');
                     //记录日志
                     Log::error('error',$exception->getMessage() . ' IN FILE ' . $exception->getFile());
-                    $this->_view->type='err404';
+                    $this->_view->type = 'err404';
                     $this->_view->display(APP_PATH.'/views/404.php');
                     break;
                 default:
@@ -59,7 +60,7 @@ class ErrorController extends Yaf_Controller_Abstract {
                     //记录文件错误日志
                     Log::error('error',$exception->getMessage() . ' IN FILE ' . $exception->getFile() . ' ON LINE ' . $exception->getLine());                    
                     //记录sentry错误日志
-                    $this->_view->type='error';
+                    $this->_view->type = 'error';
                     $this->_view->display(APP_PATH.'/views/404.php');
                     break;
             }

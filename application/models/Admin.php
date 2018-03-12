@@ -11,6 +11,7 @@ class AdminModel extends Db_Base{
 		//可以用query方法
 		//$sql = "SELECT * FROM $this->_table WHERE username='{$usr}' AND password='{$passwd}' AND is_del='0'";
 		//$usrinfo = $this->_db->query($sql);
+
 		if($usrinfo){
 			return $usrinfo;
 		}else{

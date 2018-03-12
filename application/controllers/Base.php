@@ -1,10 +1,11 @@
 <?php
-class Controller_Base extends Yaf_Controller_Abstract{
+
+class BaseController extends Yaf\Controller_Abstract{
+
     public function init(){
-        $this->_config = Yaf_Registry::get('config');
+        session_start();
+        $this->_config = Yaf\Registry::get('config');
         $this->_req = $this->getRequest();
-        $this->_session = Yaf_Session::getInstance();
-        $this->_session->start();
     }
     /**
      * reffer验证
@@ -31,7 +32,7 @@ class Controller_Base extends Yaf_Controller_Abstract{
         } else {
             echo json_encode($data);
         }
-        exit;
+        exit();
     }
 
     /**

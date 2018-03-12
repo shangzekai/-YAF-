@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `yaf_demo`
+-- 数据库: `Yaf\demo`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `is_del` enum('0','1') NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `admin`
@@ -43,5 +43,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`, `nickname`, `realname`, `email`, `is_del`) VALUES
 (1, 'melon', '25d55ad283aa400af464c76d713c07ad', 'melon', 'melon', 'malong.chn@gmail.com', '0'),
+(2, 'zhangsan', '46f94c8de14fb36680850768ff1b7f2a', 'zhangsan', 'zhangsan', 'malong.chn@gmail.com', '0'),
 (3, 'admin', '25d55ad283aa400af464c76d713c07ad', 'admin', 'admin', 'admin@gmail.com', '0'),
 (7, 'melons', 'b45746b95e3ca1a2486ad63222c37c4b', 'melons', 'melons', 'melons@gmail.com', '0');

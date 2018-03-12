@@ -1,33 +1,35 @@
 <?php
-class Bootstrap extends Yaf_Bootstrap_Abstract {
+class Bootstrap extends Yaf\Bootstrap_Abstract {
     private $_config;
+
     /**
      * [初始化 配置信息]
      * @return [type] [description]
      */
     public function _initBootstrap() {
-        $this->_config = Yaf_Application::app()->getConfig();
-        Yaf_Registry::set('config', $this->_config);
+        $this->_config = Yaf\Application::app()->getConfig();
+        Yaf\Registry::set('config', $this->_config);
     }
+
     /**
      * [加载 命名空间 加载local library components文件]
      * @return [type] [description]
      */
     public function _initRegisterLocalNamespace()
     {
-        $loader = Yaf_Loader::getInstance();
+        $loader = Yaf\Loader::getInstance();
         $loader->registerLocalNamespace(
-            array('Controller','Helper')
+            array('Helper','Error', 'Db')
         );
     }
 
     /**
      * [默认视图类(报错已用)]
-     * @param  Yaf_Dispatcher $dispatcher [description]
+     * @param  Yaf\Dispatcher $dispatcher [description]
      * @return [type]                     [description]
      */
-    public function _initView(Yaf_Dispatcher $dispatcher) {
-        $dispatcher->setView(new View(null));
+    public function _initView(Yaf\Dispatcher $dispatcher) {
+//        $dispatcher->setView(new View(null));
     }
     /**
      * [错误处理]
@@ -47,16 +49,16 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
     /**
      * [路由设置]
      */
-    public function _initRoutes(Yaf_Dispatcher $dispatcher) {
-        $router = $dispatcher->getRouter();
-        //$router->addConfig(Yaf_Registry::get('config')->routes);
-        Yaf_Loader::import(APP_CONFIG . '/route.php');
-        $router->addConfig($routeConfigs);
+    public function _initRoutes(Yaf\Dispatcher $dispatcher) {
+//        $router = $dispatcher->getRouter();
+//        $router->addConfig(Yaf\Registry::get('config')->routes);
+//        Yaf\Loader::import(APP_CONFIG . '/route.php');
+//        $router->addConfig($routeConfigs);
     }
     /**
      * layout页面布局
      */
-    public function _initLayout(Yaf_Dispatcher $dispatcher) {
-        Yaf_Registry::set('dispatcher', $dispatcher);
+    public function _initLayout(Yaf\Dispatcher $dispatcher) {
+        Yaf\Registry::set('dispatcher', $dispatcher);
     }
 }

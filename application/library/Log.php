@@ -19,7 +19,7 @@ class Log
     public static function write($message, $level, $fileName)
     {
         $debugInfo = debug_backtrace();                                                                      
-        $filePath = Yaf_Registry::get('config')->app->log;                                                    
+        $filePath = Yaf\Registry::get('config')->app->log;
         $message = date('Y/m/d H:i:s') . ' [' . $level . ']' .' ['.$fileName.'] '. $message . PHP_EOL;       
         $message .= $debugInfo[0]['file']. ' ('.$debugInfo[0]['line'].')'.PHP_EOL;                           
         file_put_contents($filePath.$fileName."-".date('Y-m-d').'.log', $message, FILE_APPEND);   
@@ -33,7 +33,7 @@ class Log
      */
     public static function error($level, $message)
     {
-        $filePath = Yaf_Registry::get('config')->app->log;
+        $filePath = Yaf\Registry::get('config')->app->log;
         $message = '[' . date('Y-m-d H:i:s') . '][' . $level . ']' . $message . PHP_EOL;
         file_put_contents($filePath.$level."-".date('Y-m-d').'.log', $message, FILE_APPEND);
     }

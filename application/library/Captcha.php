@@ -12,7 +12,7 @@ class Captcha {
     public $_config;
 
     public function __construct() {
-        $this->_config = Yaf_Registry::get("config");
+        $this->_config = Yaf\Registry::get("config");
         $this->_redis = new Redis();
         $this->_redis->connect($this->_config->redis->host);
         $this->_redis->setOption(Redis::OPT_PREFIX, $this->_config->redis->prefix);

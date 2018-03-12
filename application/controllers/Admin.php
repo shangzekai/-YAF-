@@ -1,13 +1,14 @@
 <?php
 
-class AdminController extends Controller_Base {
+class AdminController extends BaseController {
     private $_layout;
     private $_Admin;
+
     public function init() {
         parent::init();
         //使用layout页面布局
-        $this->_layout = new LayoutPlugin('layout.html');
-        $this->dispatcher = Yaf_Registry::get("dispatcher");
+        $this->_layout = new LayoutPlugin('layout.html',APP_PATH . '/views/');
+        $this->dispatcher = Yaf\Registry::get("dispatcher");
         $this->dispatcher->registerPlugin($this->_layout);
         $this->_Admin = new AdminModel();
     }
@@ -44,6 +45,9 @@ class AdminController extends Controller_Base {
             } else {
                 $this->show_json(array('errno'=>0,'errmsg'=>'添加失败!'));
             }
+
+//            $this->redirect('/admin/index');
+
         } else {
             $this->_layout->add = true;
         }
@@ -79,6 +83,7 @@ class AdminController extends Controller_Base {
         }
         //获取用户信息
         $id = $this->_req->getQuery('id');
+
         //获取用户信息
         $UsrInfo = $this->_Admin->GetUsrInfo($id);
         $this->_view->UsrInfo = $UsrInfo;
