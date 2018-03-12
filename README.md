@@ -1,23 +1,21 @@
-# YafUse - I Use Yaf!
-Yaf 地址:https://github.com/laruence/php-yaf 请针对自己的php 版本进行安装,注意服务器url路由规则
+# Yaf框架
+Yaf 地址:https://github.com/laruence/php-yaf 请针对自己的php 版本进行安装
+鸟哥的官方文档及源码.(http://www.laruence.com/manual/)
 
-## Why I Do
-自己在项目中用了yaf，用了很多外部类，感觉需要优化地方很多，逐渐改进。这里只是一个简单的例子，可以用于yaf快速上手，我的修改有些借鉴别人的思路，想要用好希望多看鸟哥的官方文档及源码.(http://www.laruence.com/manual/)
-
-## What I Do
+## 一个简单的后台管理页面，分别实现下面内容
 - layout布局实现
 - bootstrap 后台管理界面
 - PDO数据库操作类(Mysql数据主从实现)
 - 简单的增删改查实现
 - 错误捕捉显示及日志记录
 
-## Requirement
+## 依赖
 - Nginx
-- PHP 5.2 +
-- PHP Yet another Framework
-- Mysql
+- PHP 5.5 +
+- YAF扩展包 (http://www.pecl-php.net)
+- Mysql 5.5 +
 
-## How To Use
+## 怎么部署
 
 ### Rewrite rules
 
@@ -45,11 +43,8 @@ server {
 
 }
 ```
-### Database
-使用shidatabase.sql,简单的例子，只有一个数据表(增删改查实现)
+### 数据库
+使用database.sql,简单的例子，只有一个数据表(增删改查实现)
 
-### app.ini
-详细见具体文件
-
-### ErrorAction
+### 错误配置
 报错开启关闭在ini中有配置，可以记录为日志文件，需要有写权限。在Error.php实现。
