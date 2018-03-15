@@ -8,6 +8,7 @@ Yaf 地址:https://github.com/laruence/php-yaf 请针对自己的php 版本进�
 - PDO数据库操作类(Mysql数据主从实现)
 - 简单的增删改查实现
 - 错误捕捉显示及日志记录
+- 实现dataTables支持，不需要分页类的支持
 
 ## 依赖
 - Nginx
