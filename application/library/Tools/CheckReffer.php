@@ -6,9 +6,11 @@
  * 
  * @date 2012/07/16
  */
+namespace Tools;
+
 define("ALLOW_REFERER", $_SERVER['HTTP_HOST'] . '|360.cn|qipai.360.cn');
 
-class checkReffer {
+class CheckReffer {
 
     //威胁url安全检查正则数组
     var $black_regx_arr = array('<', '>', 'document\.', '(.)?([a-zA-Z]+)?(Element)+(.*)?(\()+(.)*(\))+', '(<script)+[\s]?(.)*(>)+', 'src[\s]?(=)+(.)*(>)+', '[\s]+on[a-zA-Z]+[\s]?(=)+(.)*', 'new[\s]+XMLHttp[a-zA-Z]+', '\@import[\s]+(\")?(\')?(http\:\/\/)?(url)?(\()?(javascript:)?');

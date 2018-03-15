@@ -23,7 +23,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
     {
         $loader = Yaf\Loader::getInstance();
         $loader->registerLocalNamespace(
-            array('Helper','Error', 'Db')
+            array('Tools', 'Db', 'Error')
         );
     }
 
@@ -48,6 +48,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
     public function _initView(Yaf\Dispatcher $dispatcher) {
 //        $dispatcher->setView(new View(null));
     }
+
     /**
      * [错误处理]
      * @return [type] [description]
@@ -63,6 +64,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
         }
         set_error_handler(['Error', 'errorHandler']);
     }
+
     /**
      * [路由设置]
      */
@@ -72,10 +74,12 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
 //        Yaf\Loader::import(APP_CONFIG . '/route.php');
 //        $router->addConfig($routeConfigs);
     }
+
     /**
      * layout页面布局
      */
     public function _initLayout(Yaf\Dispatcher $dispatcher) {
         Yaf\Registry::set('dispatcher', $dispatcher);
     }
+
 }

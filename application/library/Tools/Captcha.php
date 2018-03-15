@@ -5,6 +5,8 @@
  *
  * @author shybily
  */
+namespace Tools;
+
 class Captcha {
 
     public $_redis;

@@ -1,4 +1,6 @@
 <?php
+namespace Tools;
+
 class Log
 {
     const EMERGENCY = 'emergency';

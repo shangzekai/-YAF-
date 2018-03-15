@@ -11,6 +11,8 @@
  *
  * @author shybily
  */
+namespace Tools;
+
 class ValidateCode {
 
     private $charset = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789'; //随机因子  

@@ -7,7 +7,7 @@ class AdminController extends BaseController {
     public function init() {
         parent::init();
         //使用layout页面布局
-        $this->_layout = new LayoutPlugin('layout.html',APP_PATH . '/views/');
+        $this->_layout = new LayoutPlugin('layout.html',APP_PATH . 'views/');
         $this->dispatcher = Yaf\Registry::get("dispatcher");
         $this->dispatcher->registerPlugin($this->_layout);
 //        $this->_Admin = new AdminModel();
@@ -21,6 +21,18 @@ class AdminController extends BaseController {
         $User_info = AdminModel::all();
         $this->_view->usr_info = $User_info;
         $this->_layout->admin = true;
+
+//        $res["iTotalRecords"]   = "10";
+//        $res["iTotalDisplayRecords"]   = 10;
+//        $res["aaData"]  =   $User_info;
+//
+//        $this->getResponse()->response(json_encode($res));
+//        return false;
+//        $page = new Page(10);
+//        print_r($page->show());
+//
+//        die;
+//        return false;
     }
     /**
      * 用户添加
