@@ -6,6 +6,7 @@ Yaf 地址:https://github.com/laruence/php-yaf 请针对自己的php 版本进�
 - layout布局实现
 - bootstrap 后台管理界面
 - PDO数据库操作类(Mysql数据主从实现)
+- composer实现Eloquent数据库操作
 - 简单的增删改查实现
 - 错误捕捉显示及日志记录
 - 实现dataTables支持，不需要分页类的支持
